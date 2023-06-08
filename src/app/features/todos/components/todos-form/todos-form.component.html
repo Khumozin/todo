@@ -1,0 +1,13 @@
+<form class="flex flex-col"
+      [formGroup]="form">
+    <mat-form-field appearance="fill">
+        <mat-label>Task</mat-label>
+        <input matInput
+               formControlName="Task">
+    </mat-form-field>
+
+    <button mat-flat-button
+            color="primary"
+            type="button"
+            (click)="onClick()">Save</button>
+</form>

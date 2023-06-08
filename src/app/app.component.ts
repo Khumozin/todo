@@ -5,7 +5,7 @@ import { RouterOutlet } from '@angular/router';
 import { map, of } from 'rxjs';
 
 import { environment } from '../environments/environment.development';
-import { Release } from './core/models';
+import { Release } from './core';
 import { FooterComponent, NavbarComponent } from './shared';
 
 @Component({

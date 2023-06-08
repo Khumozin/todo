@@ -1,8 +1,10 @@
 import { CommonModule } from '@angular/common';
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { MatListModule } from '@angular/material/list';
 
-import { Todo } from '../../models';
+import { Todo } from '../../../../core';
+
+
 
 @Component({
   selector: 'todos-list',
@@ -12,5 +14,6 @@ import { Todo } from '../../models';
   styleUrls: ['./todos-list.component.scss'],
 })
 export class TodosListComponent {
-  @Input() todos : Todo[] = []
+  @Input() todos : Todo[] | null = []
+  @Output() onSelect = new EventEmitter<Todo>()
 }

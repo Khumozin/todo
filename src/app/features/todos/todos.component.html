@@ -1,9 +1,11 @@
 <div class="w-full flex">
     <div class="w-1/2 mx-2">
-        <todos-form (onSave)="onSave($event)" />
+        <todos-form (onSave)="onSave($event)"
+                    [todo]="selectedTodo" />
     </div>
 
     <div class="w-1/2 mx-2">
-        <todos-list [todos]="todos" />
+        <todos-list [todos]="todos$ | async"
+                    (onSelect)="onSelect($event)" />
     </div>
 </div>

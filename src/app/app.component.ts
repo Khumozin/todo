@@ -7,11 +7,12 @@ import { map, of } from 'rxjs';
 import { environment } from '../environments/environment.development';
 import { Release } from './core/models';
 import { FooterComponent } from './shared';
+import { NavbarComponent } from './shared/components/navbar/navbar.component';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [CommonModule, RouterOutlet, FooterComponent],
+  imports: [CommonModule, RouterOutlet, FooterComponent, NavbarComponent],
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
 })

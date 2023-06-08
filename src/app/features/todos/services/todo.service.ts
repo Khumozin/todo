@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { addDoc, collection, deleteDoc, doc, Firestore, getDoc, getDocs, updateDoc } from '@angular/fire/firestore';
 
 import { Todo } from '../models';
 
@@ -6,15 +7,35 @@ import { Todo } from '../models';
   providedIn: 'root',
 })
 export class TodoService {
-  constructor() {}
+  constructor(private readonly firestore: Firestore) {}
 
-  get() {}
+  async getOne(id: string) {
+    const docSnap = await getDoc(doc(this.firestore, 'Tasks', id));
+    return { ...docSnap.data(), ID: id } as Todo;
+  }
 
-  getAll() {}
+  async getAll() {
+    const docs = await getDocs(collection(this.firestore, 'Tasks'));
+    let items: any[] = [];
 
-  add(todo: Partial<Todo>) {}
+    docs.forEach((d) => {
+      items.push({ ID: d.id, ...d.data() });
+    });
 
-  update() {}
+    return items as Todo[];
+  }
 
-  delete() {}
+  async add(todo: Partial<Todo>) {
+    return await addDoc(collection(this.firestore, 'Tasks'), todo);
+  }
+
+  async update(todo: Partial<Todo>) {
+    return await updateDoc(doc(this.firestore, 'Tasks', todo.ID!), {
+      Task: todo.Task,
+    });
+  }
+
+  async delete(id: string) {
+    await deleteDoc(doc(this.firestore, 'Tasks', id));
+  }
 }

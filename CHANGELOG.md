@@ -1,3 +1,10 @@
+# [1.1.0](https://github.com/Khumozin/todo/compare/v1.0.1...v1.1.0) (2023-06-08)
+
+
+### Features
+
+* **features:** implement todos feature ([0f58df6](https://github.com/Khumozin/todo/commit/0f58df685916a783d197eecbbbcfcafa737414fa))
+
 ## [1.0.1](https://github.com/Khumozin/todo/compare/v1.0.0...v1.0.1) (2023-06-08)
 
 

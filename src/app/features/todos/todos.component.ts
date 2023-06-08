@@ -1,9 +1,10 @@
 import { CommonModule } from '@angular/common';
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, inject } from '@angular/core';
+import { map } from 'rxjs';
 
+import { FormValue, Todo } from '../../core';
+import { TodoService } from '../../core/services';
 import { TodosFormComponent, TodosListComponent } from './components';
-import { FormValue, Todo } from './models';
-import { TodoService } from './services';
 
 @Component({
   selector: 'app-todos',
@@ -12,25 +13,33 @@ import { TodoService } from './services';
   templateUrl: './todos.component.html',
   styleUrls: ['./todos.component.scss'],
 })
-export class TodosComponent implements OnInit {
+export class TodosComponent {
   private readonly todoService = inject(TodoService);
 
-  public todos: Todo[] = [];
+  public readonly todos$ = this.todoService
+    .getAll()
+    .pipe(
+      map((todos) =>
+        todos.sort((a, b) => b.Created?.seconds - a.Created?.seconds)
+      )
+    );
 
-  ngOnInit(): void {
-    this.todoService.getAll().then((items) => {
-      this.todos = items;
-    });
-  }
+  public selectedTodo: Todo | null = null;
 
   onSave(value: Partial<FormValue>): void {
-    this.todoService.add(value).then((response) => {
-      const item: Todo = {
-        ID: response.id,
-        Task: value.Task!,
-      };
+    if (this.selectedTodo) {
+      this.selectedTodo.Task = value.Task!;
+      this.todoService
+        .update(this.selectedTodo)
+        .then(() => (this.selectedTodo = null));
+    } else {
+      this.todoService.create(value).then(() => {
+        this.selectedTodo = null;
+      });
+    }
+  }
 
-      this.todos.push(item);
-    });
+  onSelect(item: Todo): void {
+    this.selectedTodo = item;
   }
 }

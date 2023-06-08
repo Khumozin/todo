@@ -1,3 +1,10 @@
+## [1.2.1](https://github.com/Khumozin/todo/compare/v1.2.0...v1.2.1) (2023-06-08)
+
+
+### Bug Fixes
+
+* **core:** fix todo service ([5c63f18](https://github.com/Khumozin/todo/commit/5c63f186cbaf01e577fe1d1612c9b05a54633ccf))
+
 # [1.2.0](https://github.com/Khumozin/todo/compare/v1.1.0...v1.2.0) (2023-06-08)
 
 

@@ -1,3 +1,10 @@
+# [1.2.0](https://github.com/Khumozin/todo/compare/v1.1.0...v1.2.0) (2023-06-08)
+
+
+### Features
+
+* **todos:** add firebase ([0715ba0](https://github.com/Khumozin/todo/commit/0715ba0a874bbd9dbf6a7083ce28459e60c6b3b0))
+
 # [1.1.0](https://github.com/Khumozin/todo/compare/v1.0.1...v1.1.0) (2023-06-08)
 
 

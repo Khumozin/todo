@@ -6,8 +6,7 @@ import { map, of } from 'rxjs';
 
 import { environment } from '../environments/environment.development';
 import { Release } from './core/models';
-import { FooterComponent } from './shared';
-import { NavbarComponent } from './shared/components/navbar/navbar.component';
+import { FooterComponent, NavbarComponent } from './shared';
 
 @Component({
   selector: 'app-root',
